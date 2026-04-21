@@ -15,8 +15,9 @@ Free live cams for Montauk include:
   - https://cameras.montauklighthouse.com/southside.mp4?t=1776729243  
   - https://cameras.montauklighthouse.com/alamo.mp4?t=1776729243  
   - https://cameras.montauklighthouse.com/rips.mp4?t=1776729243
+  - https://cameras.montauklighthouse.com/northside.mp4?t=1776729243  
 
-I've already experimented with embedding these URLs into my own webpage with iframe tags.  
+These URLs can be included into my own app with iframe tags since they don't have a direct way of embedding them.  
 
 
 
