@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Surf App</title>
+        <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+        <link href="./static/site.css" rel="stylesheet" />
+        <script src="./static/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    
+    <style>
+            body {
+      
+      font-family: 'Inter';
+              margin: 0;
+      min-height: 100vh;
+
+      background-image: url('./static/images/Background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    </style>
+    
+    
+<body>
+
+
+<div class="page-selector">
+  <h1>Select Info:</h1>
+  
+  <select id="pageSelect" onchange="changePage()">
+    <option value="wave1">Wave Data: Buoy 44025</option>
+    <option value="wave2">Wave Data: Buoy 44097</option>
+    <option value="weather">Weather Data</option>
+    <option value="tides">Tide Chart</option>
+    <option value="turtles">Turtles Cam</option>
+    <option value="northbar">North Bar Cam</option>
+    <option value="alamo">Alamo Cam</option>
+  </select>
+</div>
+
+
+<div id="wave1" class="page active">
+  <div class="glass-card">
+
+    <h2>Wave Details</h2>
+    <p>South of Islip</p>
+
+    <h2>NOAA Buoy 44025</h2>
+
+    <p id="statusA">Loading buoy data...</p>
+    <p id="waveA"></p>
+    <p id="periodA"></p>
+    <p id="tempA"></p>
+    <p id="swellDirA"></p>
+
+  </div>
+</div>
+
+
+<div id="wave2" class="page">
+  <div class="glass-card">
+
+    <h2>Wave Details</h2>
+    <p>Block Island</p>
+
+    <h2>NOAA Buoy 44097</h2>
+
+    <p id="statusB">Loading buoy data...</p>
+    <p id="waveB"></p>
+    <p id="periodB"></p>
+    <p id="tempB"></p>
+    <p id="swellDirB"></p>
+
+  </div>
+</div>
+
+
+<div id="weather" class="page">
+  <div class="glass-card">
+
+    <h2>Weather Forecast</h2>
+    <p>Montauk, NY</p>
+
+    <h2>NOAA Weather</h2>
+
+    <p id="weatherText"></p>
+    <p id="wind"></p>
+
+  </div>
+</div>
+
+
+<div id="tides" class="page">
+  <div class="glass-card tide-card">
+
+    <h2>Tide Chart</h2>
+    <p>Montauk, NY</p>
+
+    <canvas id="tideChart"></canvas>
+
+  </div>
+</div>
+
+
+<div id="turtles" class="page">
+  <div class="glass-card">
+
+    <h2>Turtles</h2>
+
+    <video controls autoplay muted loop playsinline>
+      <source
+        src="https://cameras.montauklighthouse.com/southside.mp4"
+        type="video/mp4">
+    </video>
+
+  </div>
+</div>
+
+
+<div id="northbar" class="page">
+  <div class="glass-card">
+
+    <h2>North Bar</h2>
+
+    <video controls autoplay muted loop playsinline>
+      <source
+        src="https://cameras.montauklighthouse.com/northside.mp4?t=1776729243"
+        type="video/mp4">
+    </video>
+
+  </div>
+</div>
+
+
+<div id="alamo" class="page">
+  <div class="glass-card">
+
+    <h2>Alamo</h2>
+
+    <video controls autoplay muted loop playsinline>
+      <source
+        src="https://cameras.montauklighthouse.com/alamo.mp4?t=1776729243"
+        type="video/mp4">
+    </video>
+
+  </div>
+</div>
+
+<script>
+
+  function changePage() {
+
+    const selectedPage =
+      document.getElementById("pageSelect").value;
+
+    const pages =
+      document.querySelectorAll(".page");
+
+    pages.forEach(page => {
+      page.classList.remove("active");
+    });
+
+    document
+      .getElementById(selectedPage)
+      .classList.add("active");
+  }
+
+  loadBuoyData44025();
+  loadBuoyData44097();
+  loadWeather();
+  loadTideChart();
+
+</script>
+
+</body>
+</html>
